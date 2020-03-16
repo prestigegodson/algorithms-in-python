@@ -1,3 +1,9 @@
+"""
+Given an array A[5, 2, 2, 4, 3, 1, 4, 5, 2, 2]
+and a sum = 10
+return two elements in the array than when added,
+can equal the sum
+"""
 pairs = [5, 2, 2, 4, 3, 1, 4, 5, 2, 2]
 pair_sum = 10
 
