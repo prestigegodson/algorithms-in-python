@@ -32,14 +32,14 @@ def get_pair_with_sum_in_sorted_array(arr, sum):
 
 def get_pair_with_sum_in_unsorted_array(arr, sum):
 
-    compliments = set()
+    compliments = dict()
 
     for value in arr:
         s = sum - value
-        if s in compliments:
+        if compliments.get(s):
             return [value, s]
         else:
-            compliments.add(value)
+            compliments[value] = True
 
     return []
 
