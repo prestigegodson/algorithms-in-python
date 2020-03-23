@@ -1,3 +1,6 @@
+from queue import Queue
+
+
 class Node:
 
     def __init__(self, value, left, right):
@@ -55,12 +58,85 @@ class BinarySearchTree:
             else:
                 next_tree = next_tree.right
 
+    def breadth_first_search(self):
+        array = []
+        queue = Queue()
+        current_node = self.root
+        queue.enqueue(current_node)
 
+        while queue.length > 0:
+            current_node = queue.dequeue()
+            array.append(current_node.value)
+            if current_node.left:
+                queue.enqueue(current_node.left)
+            if current_node.right:
+                queue.enqueue(current_node.right)
+
+        return array
+
+    def dfs_in_order(self):
+        return BinarySearchTree._traverse_in_order(self.root, [])
+
+    def dfs_pre_order(self):
+        return BinarySearchTree._traverse_pre_order(self.root, [])
+
+    def dfs_post_order(self):
+        return BinarySearchTree._traverse_post_order(self.root, [])
+
+    @staticmethod
+    def _traverse_pre_order(node, array):
+        array.append(node.value)
+
+        if node.left:
+            BinarySearchTree._traverse_pre_order(node.left, array)
+
+        if node.right:
+            BinarySearchTree._traverse_pre_order(node.right, array)
+
+        return array
+
+    @staticmethod
+    def _traverse_in_order(node, array):
+
+        if node.left:
+            BinarySearchTree._traverse_in_order(node.left, array)
+
+        array.append(node.value)
+
+        if node.right:
+            BinarySearchTree._traverse_in_order(node.right, array)
+
+        return array
+
+    @staticmethod
+    def _traverse_post_order(node, array):
+
+        if node.left:
+            BinarySearchTree._traverse_post_order(node.left, array)
+
+        if node.right:
+            BinarySearchTree._traverse_post_order(node.right, array)
+
+        array.append(node.value)
+
+        return array
 
 
 bst = BinarySearchTree()
 bst.insert(9)
 bst.insert(4)
+bst.insert(6)
 bst.insert(20)
-bst.insert(1)        
-print(bst.lookup(4))
+bst.insert(170)
+bst.insert(15)
+bst.insert(1)
+print(bst.breadth_first_search())
+print(bst.dfs_pre_order())
+print(bst.dfs_in_order())
+print(bst.dfs_post_order())
+"""
+            9
+    4               20
+1        6       15        170
+BFS[9, 4, 20, 1, 6, 15, 170]
+"""

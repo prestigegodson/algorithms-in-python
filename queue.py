@@ -32,15 +32,20 @@ class Queue:
         if self.length == 0:
             raise Exception('Stack is empty')
 
+        value = None
         if self.first == self.last:
+            value = self.first.value
             self.first = None
             self.last = None
             self.length = 0
-            return
+            return value
 
+        value = self.first.value
         first = self.first
         self.first = first.next
         self.length -= 1
+
+        return value
 
     def peek(self):
         return self.first
