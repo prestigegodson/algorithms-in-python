@@ -57,9 +57,10 @@ class Sorting:
         left = array[0:middle]
         right = array[middle:length]
 
-        return self._merge(self.merge_sort(left), self.merge_sort(right))
+        return Sorting._merge(self.merge_sort(left), self.merge_sort(right))
 
-    def _merge(self, array1, array2):
+    @staticmethod
+    def _merge(array1, array2):
 
         array = []
 
@@ -83,4 +84,4 @@ class Sorting:
 
 
 sorting = Sorting()
-print(sorting.merge_sort([1, 5, 4, 10, 1, 11, 2, 100, 95, 90, 80, 60, 3]))
+print(sorting.merge_sort([1, 5, 4, 10, 1, 11, 2]))
