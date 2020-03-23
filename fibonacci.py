@@ -10,21 +10,11 @@ def fib_recursion(n):
     if n < 2:
         return n
 
-    first = None
-    second = None
-    if n-1 in store:
-        first = store.get(n-1)
-    if n-2 in store:
-        second = store.get(n-2)
+    if n in store:
+        return store.get(n)
 
-    if not first:
-        first = fib_recursion(n-1)
-        store[n-1] = first
-    if not second:
-        second = fib_recursion(n-2)
-        store[n-2] = second
-
-    return first + second
+    store[n] = fib_recursion(n-1) + fib_recursion(n-2)
+    return store[n]
 
 
 def fib_recursion_old(n):
@@ -46,5 +36,5 @@ def fib_iterative(n):
     return array[n]
 
 
-print(fib_recursion(400))
+print(fib_recursion(10))
 print(calculations)
