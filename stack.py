@@ -26,6 +26,7 @@ class Stack:
         top = self.top
         node.next = top
         self.top = node
+        self.length += 1
 
     def pop(self):
         if self.length == 0:
@@ -36,7 +37,7 @@ class Stack:
 
         top = self.top
         self.top = top.next
-        top.next = None
+        top = None
 
         self.length -= 1
 
@@ -52,7 +53,5 @@ stack = Stack()
 stack.push(10)
 stack.push(15)
 stack.push(20)
-print(stack.pop())
-print(stack.pop())
-print(stack.pop())
+stack.pop()
 print(stack.peek())

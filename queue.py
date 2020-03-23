@@ -41,6 +41,7 @@ class Queue:
             return value
 
         value = self.first.value
+
         first = self.first
         self.first = first.next
         self.length -= 1
